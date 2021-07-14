@@ -2,27 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    address-book.service: address-book-{{ .Values.instance }}
-  name: address-book-{{ .Values.instance }}
+    address-book.service: address-book-develop
+  name: address-book-develop
 spec:
   replicas: 1
   selector:
     matchLabels:
-      address-book.service: address-book-{{ .Values.instance }}
+      address-book.service: address-book-develop
   template:
     metadata:
       labels:
-        address-book.service: address-book-{{ .Values.instance }}
+        address-book.service: address-book-develop
       annotations:
         rolloutVersion: {{ randAlphaNum 8 | quote }}
     spec:
       containers:
         - image: eu.gcr.io/s-epo-itcoopk8spoc-prj/address-book:latest
   #      - image: {{ .Values.imageRegistry }}/{{ .Values.component.addressBookService.name }}:{{ .Values.application.version }}
-          name: address-book-service-{{ .Values.instance }}
+          name: address-book-service-develop
           envFrom:
             - configMapRef:
-                name: address-book-configmap-{{ .Values.instance }}
+                name: address-book-configmap-develop
           ports:
             - containerPort: 8080
               name: "address-book"
