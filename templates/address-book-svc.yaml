@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    service-template-service.service: address-book-{{ .Values.instance }}
-  name: address-book-{{ .Values.instance }}
+    service-template-service.service: address-book-develop
+  name: address-book-develop
   annotations:
     cloud.google.com/neg: '{"ingress": true}'
     prometheus.io/scrape: "true"
@@ -15,5 +15,5 @@ spec:
     port: 8080
     targetPort: 8080
   selector:
-    address-book.service: address-book-{{ .Values.instance }}
+    address-book.service: address-book-develop
   #type: NodePort
