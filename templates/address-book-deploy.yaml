@@ -14,7 +14,7 @@ spec:
       labels:
         address-book.service: address-book-develop
       annotations:
-        rolloutVersion: {{ randAlphaNum 8 | quote }}
+        rolloutVersion: "1.0.0"
     spec:
       containers:
         - image: eu.gcr.io/s-epo-itcoopk8spoc-prj/address-book:latest
